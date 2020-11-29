@@ -10,7 +10,9 @@
     "coverage": "npm run test:unit -- --coverage",
     "test:e2e": "codeceptjs run --steps",
     "test": "npm run coverage && start-server-and-test start http://localhost:8080 test:e2e",
-    "lint": "eslint --ext js,jsx ."
+    "lint": "eslint --ext js,jsx .",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/CodeSoom/project-react-2-DavidYang2149/issues"
   },
-  "homepage": "https://github.com/CodeSoom/project-react-2-DavidYang2149#readme",
+  "homepage": "https://CodeSoom.github.io/project-react-2-DavidYang2149",
   "dependencies": {
     "@codeceptjs/configure": "^0.6.2",
     "@reduxjs/toolkit": "^1.4.0",
@@ -53,6 +55,7 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "gh-pages": "^3.1.0",
     "given2": "^2.1.7",
     "html-webpack-plugin": "^4.5.0",
     "jest": "^26.6.3",

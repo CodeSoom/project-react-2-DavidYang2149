@@ -1,15 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import mockRecipe from '../../fixtures/recipe';
-import mockCategories from '../../fixtures/categories';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../components/common/Button';
 
 import Container from '../layouts/Container';
+
 import RecipeIngredientsContainer from '../containers/RecipeIngredientsContainer';
 import RecipeDetailContainer from '../containers/RecipeDetailContainer';
 
-export default function RecipePage({ recipe = mockRecipe }) {
+import {
+  loadRecipe,
+  loadCategories,
+} from '../store/slice';
+
+import { get } from '../utils/utils';
+
+export default function RecipePage() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRecipe());
+    dispatch(loadCategories());
+  });
+
+  const recipe = useSelector(get('recipe'));
+  const categories = useSelector(get('categories'));
   const { ingredients } = recipe;
 
   return (
@@ -27,7 +43,7 @@ export default function RecipePage({ recipe = mockRecipe }) {
 
       <RecipeDetailContainer
         recipe={recipe}
-        categories={mockCategories}
+        categories={categories}
       />
 
       <RecipeIngredientsContainer ingredients={ingredients} />
