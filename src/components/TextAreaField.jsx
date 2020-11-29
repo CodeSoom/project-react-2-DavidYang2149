@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function TextField({
-  labelClass, inputClass,
-  label, type = 'text', id, name, value, readOnly = false, onChange,
+export default function TextAreaField({
+  labelClass, textAreaClass,
+  label, id, name, value, readOnly = false, onChange,
 }) {
   const handleChange = (event) => {
     const { target } = event;
@@ -17,9 +17,8 @@ export default function TextField({
       >
         {label}
       </label>
-      <input
-        className={inputClass}
-        type={type}
+      <textarea
+        className={textAreaClass}
         id={id}
         name={name}
         value={value}

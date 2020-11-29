@@ -11,8 +11,9 @@ describe('TextField', () => {
 
       return render((
         <TextField
-          label="리뷰 설명"
-          name="description"
+          label="레시피명"
+          id="recipe-name"
+          name="name"
           onChange={handleChange}
         />
       ));
@@ -21,7 +22,7 @@ describe('TextField', () => {
     it('renders label and input control', () => {
       const { queryByLabelText } = renderTextField();
 
-      expect(queryByLabelText('리뷰 설명')).not.toBeNull();
+      expect(queryByLabelText('레시피명')).not.toBeNull();
     });
 
     it('renders “text” input control', () => {
@@ -37,9 +38,10 @@ describe('TextField', () => {
 
       return render((
         <TextField
-          label="평점"
+          label="생산량"
+          id="recipe-product"
           type="number"
-          name="score"
+          name="product"
           onChange={handleChange}
         />
       ));
@@ -48,7 +50,7 @@ describe('TextField', () => {
     it('renders label and input control', () => {
       const { queryByLabelText } = renderTextField();
 
-      expect(queryByLabelText('평점')).not.toBeNull();
+      expect(queryByLabelText('생산량')).not.toBeNull();
     });
 
     it('renders “number” input control', () => {
@@ -59,38 +61,41 @@ describe('TextField', () => {
   });
 
   it('renders value', () => {
-    const name = 'score';
-    const value = '5';
+    const name = 'bakingTemperature';
+    const value = 180;
 
     const handleChange = jest.fn();
 
     const { getByLabelText } = render((
       <TextField
-        label="평점"
+        label="오븐 온도(℃)"
+        type="number"
         name={name}
         value={value}
         onChange={handleChange}
       />
     ));
 
-    expect(getByLabelText('평점').value).toBe(value);
+    expect(getByLabelText('오븐 온도(℃)').value).toBe(value);
   });
 
   it('listens change events', () => {
-    const name = 'score';
-    const value = '5';
+    const name = 'bakingTemperature';
+    const value = 180;
 
     const handleChange = jest.fn();
 
     const { getByLabelText } = render((
       <TextField
-        label="평점"
+        label="오븐 온도(℃)"
+        type="number"
         name={name}
+        value={value}
         onChange={handleChange}
       />
     ));
 
-    fireEvent.change(getByLabelText('평점'), { target: { value } });
+    fireEvent.change(getByLabelText('오븐 온도(℃)'), { target: { value } });
 
     expect(handleChange).toBeCalledWith({ name, value });
   });

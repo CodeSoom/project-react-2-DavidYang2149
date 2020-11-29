@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function TextField({
-  labelClass, inputClass,
-  label, type = 'text', id, name, value, readOnly = false, onChange,
+export default function SelectField({
+  labelClass, selectClass,
+  label, id, name, value, options, readOnly = false, onChange,
 }) {
   const handleChange = (event) => {
     const { target } = event;
@@ -17,16 +17,25 @@ export default function TextField({
       >
         {label}
       </label>
-      <input
-        className={inputClass}
-        type={type}
+      <select
+        className={selectClass}
         id={id}
         name={name}
         value={value}
         readOnly={readOnly}
         onChange={handleChange}
-        placeholder={`${label}(을)를 입력하세요`}
-      />
+      >
+        {
+          options.map((option) => (
+            <option
+              key={option}
+              value={option}
+            >
+              {option}
+            </option>
+          ))
+        }
+      </select>
     </>
   );
 }
