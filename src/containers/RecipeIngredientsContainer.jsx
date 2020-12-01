@@ -5,6 +5,10 @@ import Button from '../components/common/Button';
 import Border from '../layouts/Border';
 
 export default function RecipeIngredientsContainer({ ingredients }) {
+  const handleChange = () => {
+    // TODO onChange
+  };
+
   return (
     <>
       <Border message="Ingredients" />
@@ -29,9 +33,10 @@ export default function RecipeIngredientsContainer({ ingredients }) {
                       className="bg-gray-200 rounded-lg py-3 px-3 shadow-inner"
                       type="text"
                       id={`recipe-ingredientName-${index}`}
-                      placeholder="재료명을 입력하세요"
                       name="ingredientName"
                       value={ingredientName}
+                      onChange={handleChange}
+                      placeholder="재료명을 입력하세요"
                     />
                   </div>
                   <div className="flex-grow ml-1">
@@ -39,9 +44,10 @@ export default function RecipeIngredientsContainer({ ingredients }) {
                       className="bg-gray-200 rounded-lg py-3 px-3 shadow-inner"
                       type="number"
                       id={`recipe-weight-${index}`}
-                      placeholder="g을 입력하세요"
                       name="weight"
                       value={weight}
+                      onChange={handleChange}
+                      placeholder="g을 입력하세요"
                     />
                   </div>
                   <div className="flex-grow ml-1">
@@ -58,9 +64,10 @@ export default function RecipeIngredientsContainer({ ingredients }) {
                 className="bg-gray-200 rounded-lg py-3 px-3 shadow-inner"
                 type="text"
                 id="recipe-ingredientName"
-                placeholder="재료명을 입력하세요"
                 name="ingredientName"
                 value=""
+                onChange={handleChange}
+                placeholder="재료명을 입력하세요"
               />
             </div>
             <div className="flex-grow ml-1">
@@ -68,9 +75,10 @@ export default function RecipeIngredientsContainer({ ingredients }) {
                 className="bg-gray-200 rounded-lg py-3 px-3 shadow-inner"
                 type="number"
                 id="recipe-weight"
-                placeholder="g을 입력하세요"
                 name="weight"
                 value=""
+                onChange={handleChange}
+                placeholder="g을 입력하세요"
               />
             </div>
             <div className="flex-grow ml-1">

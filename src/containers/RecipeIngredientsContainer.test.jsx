@@ -8,6 +8,7 @@ import mockRecipe from '../../fixtures/recipe';
 
 describe('RecipeIngredientsContainer', () => {
   const { ingredients } = mockRecipe;
+
   it('renders page', () => {
     const { container } = render((
       <RecipeIngredientsContainer ingredients={ingredients} />
