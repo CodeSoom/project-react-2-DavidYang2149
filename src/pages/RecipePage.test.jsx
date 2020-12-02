@@ -29,16 +29,16 @@ describe('RecipePage', () => {
     ));
   }
 
-  it('renders page', () => {
+  it('renders recipe page', () => {
     renderRecipePage();
   });
 
-  it('renders region and category select buttons', () => {
-    const { queryByText } = renderRecipePage();
+  it('renders ', () => {
+    const { container } = renderRecipePage();
 
-    expect(dispatch).toBeCalled();
+    // expect(dispatch).toBeCalled();
 
-    expect(queryByText('마들렌')).not.toBeNull();
-    expect(queryByText('마들렌 만드는 방법')).not.toBeNull();
+    expect(container).toHaveTextContent('마들렌');
+    expect(container).toHaveTextContent('마들렌 만드는 방법');
   });
 });

@@ -14,6 +14,7 @@ describe('TextAreaField', () => {
     const { getByLabelText } = render((
       <TextAreaField
         label="만드는 방법"
+        id="recipe-process"
         name={name}
         value={value}
         onChange={handleChange}
@@ -32,8 +33,8 @@ describe('TextAreaField', () => {
     const { getByLabelText } = render((
       <TextAreaField
         label="만드는 방법"
+        id="recipe-process"
         name={name}
-        value={value}
         onChange={handleChange}
       />
     ));

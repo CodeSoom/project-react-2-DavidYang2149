@@ -38,7 +38,7 @@ describe('SelectField', () => {
         label="카테고리"
         id="recipe-category"
         name={name}
-        value={value}
+        value="쿠키"
         options={categories}
         onChange={handleChange}
       />

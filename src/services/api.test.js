@@ -18,7 +18,7 @@ describe('api', () => {
       mockFetch(RECIPE);
     });
 
-    it('returns regions', async () => {
+    it('returns recipe', async () => {
       const recipe = await fetchRecipe();
 
       expect(recipe).toEqual(RECIPE);
@@ -30,7 +30,7 @@ describe('api', () => {
       mockFetch(CATEGORIES);
     });
 
-    it('returns regions', async () => {
+    it('returns categories', async () => {
       const categories = await fetchCategories();
 
       expect(categories).toEqual(CATEGORIES);

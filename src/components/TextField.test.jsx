@@ -62,13 +62,14 @@ describe('TextField', () => {
 
   it('renders value', () => {
     const name = 'bakingTemperature';
-    const value = 180;
+    const value = '180';
 
     const handleChange = jest.fn();
 
     const { getByLabelText } = render((
       <TextField
         label="오븐 온도(℃)"
+        id="recipe-bakingTemperature"
         type="number"
         name={name}
         value={value}
@@ -81,16 +82,16 @@ describe('TextField', () => {
 
   it('listens change events', () => {
     const name = 'bakingTemperature';
-    const value = 180;
+    const value = '180';
 
     const handleChange = jest.fn();
 
     const { getByLabelText } = render((
       <TextField
         label="오븐 온도(℃)"
+        id="recipe-bakingTemperature"
         type="number"
         name={name}
-        value={value}
         onChange={handleChange}
       />
     ));

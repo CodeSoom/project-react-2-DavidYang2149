@@ -12,7 +12,15 @@ import reducer, {
 describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
-      recipe: {},
+      recipe: {
+        bakingTemperature: '',
+        bakingTime: '',
+        category: '쿠키',
+        ingredients: [],
+        name: '',
+        process: '',
+        product: 0,
+      },
       categories: [],
     };
 
@@ -24,7 +32,7 @@ describe('reducer', () => {
   });
 
   describe('setRecipe', () => {
-    it('changes regions', () => {
+    it('changes recipe', () => {
       const initialState = {
         recipe: {
           name: '',
@@ -54,7 +62,8 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRecipe(recipe));
 
-      expect(state.recipe).toHaveValue();
+      expect(state.recipe.name).toBe('마들렌');
+      expect(state.recipe.category).toBe('구움과자');
     });
   });
 
@@ -87,7 +96,7 @@ describe('actions', () => {
         store = mockStore();
       });
 
-      it('runs setRestaurants', async () => {
+      it('runs setRecipe', async () => {
         await store.dispatch(loadRecipe());
 
         const actions = store.getActions();

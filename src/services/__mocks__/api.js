@@ -1,5 +1,5 @@
 export async function fetchRecipe() {
-  return [];
+  return {};
 }
 
 export async function fetchCategories() {
