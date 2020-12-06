@@ -1,5 +1,5 @@
 const recipe = {
-  name: '마들렌',
+  title: '마들렌',
   category: '구움과자',
   product: 16,
   bakingTemperature: '180',

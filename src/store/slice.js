@@ -6,20 +6,20 @@ import {
 } from '../services/api';
 
 const initialRecipeFields = {
-  recipe: {
-    name: '',
-    category: '쿠키',
-    product: 0,
-    bakingTemperature: '',
-    bakingTime: '',
-    ingredients: [],
-    process: '',
-  },
+  title: '',
+  category: '쿠키',
+  product: 0,
+  bakingTemperature: '',
+  bakingTime: '',
+  ingredients: [],
+  process: '',
 };
 
 const initialState = {
   categories: [],
-  ...initialRecipeFields,
+  recipe: {
+    ...initialRecipeFields,
+  },
 };
 
 const { actions, reducer } = createSlice({
@@ -39,12 +39,23 @@ const { actions, reducer } = createSlice({
         categories,
       };
     },
+
+    changeRecipeField(state, { payload: { name, value } }) {
+      return {
+        ...state,
+        recipe: {
+          ...state.recipe,
+          [name]: value,
+        },
+      };
+    },
   },
 });
 
 export const {
   setRecipe,
   setCategories,
+  changeRecipeField,
 } = actions;
 
 export function loadRecipe() {

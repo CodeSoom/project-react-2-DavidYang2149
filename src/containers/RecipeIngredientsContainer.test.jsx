@@ -2,16 +2,28 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import RecipeIngredientsContainer from './RecipeIngredientsContainer';
+import { useDispatch, useSelector } from 'react-redux';
 
 import mockRecipe from '../../fixtures/recipe';
 
+import RecipeIngredientsContainer from './RecipeIngredientsContainer';
+
 describe('RecipeIngredientsContainer', () => {
-  const { ingredients } = mockRecipe;
+  const dispatch = jest.fn();
+
+  beforeEach(() => {
+    dispatch.mockClear();
+
+    useDispatch.mockImplementation(() => dispatch);
+
+    useSelector.mockImplementation((selector) => selector({
+      recipe: mockRecipe,
+    }));
+  });
 
   it('renders page', () => {
     const { container } = render((
-      <RecipeIngredientsContainer ingredients={ingredients} />
+      <RecipeIngredientsContainer />
     ));
 
     expect(container).toHaveTextContent('Ingredients');

@@ -1,12 +1,19 @@
 import React from 'react';
 
+import { useSelector } from 'react-redux';
+
 import Button from '../components/common/Button';
 
 import Border from '../layouts/Border';
 
-export default function RecipeIngredientsContainer({ ingredients }) {
+import { get } from '../utils/utils';
+
+export default function RecipeIngredientsContainer() {
+  const recipe = useSelector(get('recipe'));
+  const { ingredients } = recipe;
+
   const handleChange = () => {
-    // TODO onChange
+    // dispatch(changeRecipeField({ name, value }));
   };
 
   return (

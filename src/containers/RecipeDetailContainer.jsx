@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useSelector, useDispatch } from 'react-redux';
+
 import SelectField from '../components/SelectField';
 import TextField from '../components/TextField';
 import TextAreaField from '../components/TextAreaField';
@@ -8,13 +10,24 @@ import CheckBox from '../components/common/CheckBox';
 
 import Border from '../layouts/Border';
 
-export default function RecipeDetailContainer({ recipe, categories }) {
+import {
+  changeRecipeField,
+} from '../store/slice';
+
+import { get } from '../utils/utils';
+
+export default function RecipeDetailContainer() {
+  const dispatch = useDispatch();
+
+  const recipe = useSelector(get('recipe'));
+  const categories = useSelector(get('categories'));
+
   const {
-    name, category, product, bakingTemperature, bakingTime, process,
+    title, category, product, bakingTemperature, bakingTime, process,
   } = recipe;
 
-  const handleChange = () => {
-    // TODO onChange
+  const handleChange = ({ name, value }) => {
+    dispatch(changeRecipeField({ name, value }));
   };
 
   return (
@@ -30,8 +43,8 @@ export default function RecipeDetailContainer({ recipe, categories }) {
                 inputClass="bg-gray-200 w-full rounded-lg py-3 px-3 shadow-inner"
                 label="레시피명"
                 id="recipe-name"
-                name="name"
-                value={name}
+                name="title"
+                value={title}
                 // readOnly
                 onChange={handleChange}
               />

@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import reducer, {
   setRecipe,
   setCategories,
+  changeRecipeField,
   loadRecipe,
   loadCategories,
 } from './slice';
@@ -13,11 +14,11 @@ describe('reducer', () => {
   context('when previous state is undefined', () => {
     const initialState = {
       recipe: {
+        title: '',
+        category: '쿠키',
         bakingTemperature: '',
         bakingTime: '',
-        category: '쿠키',
         ingredients: [],
-        name: '',
         process: '',
         product: 0,
       },
@@ -35,7 +36,7 @@ describe('reducer', () => {
     it('changes recipe', () => {
       const initialState = {
         recipe: {
-          name: '',
+          title: '',
           category: '쿠키',
           product: 0,
           bakingTemperature: '',
@@ -46,7 +47,7 @@ describe('reducer', () => {
       };
 
       const recipe = {
-        name: '마들렌',
+        title: '마들렌',
         category: '구움과자',
         product: 16,
         bakingTemperature: '180',
@@ -62,7 +63,7 @@ describe('reducer', () => {
 
       const state = reducer(initialState, setRecipe(recipe));
 
-      expect(state.recipe.name).toBe('마들렌');
+      expect(state.recipe.title).toBe('마들렌');
       expect(state.recipe.category).toBe('구움과자');
     });
   });
@@ -78,6 +79,56 @@ describe('reducer', () => {
       const state = reducer(initialState, setCategories(categories));
 
       expect(state.categories).toHaveLength(7);
+    });
+  });
+});
+
+describe('changeRecipeField', () => {
+  context('when name is changed', () => {
+    it('changes only name field', () => {
+      const initialState = {
+        recipe: {
+          title: '딸기케이크',
+          category: '쿠키',
+          product: 0,
+          bakingTemperature: '',
+          bakingTime: '',
+          ingredients: [],
+          process: '',
+        },
+      };
+
+      const state = reducer(
+        initialState,
+        changeRecipeField({ name: 'title', value: '마들렌' }),
+      );
+
+      expect(state.recipe.title).toBe('마들렌');
+      expect(state.recipe.category).toBe('쿠키');
+    });
+  });
+
+  context('when category is changed', () => {
+    it('changes only category field', () => {
+      const initialState = {
+        recipe: {
+          title: '딸기케이크',
+          category: '쿠키',
+          product: 0,
+          bakingTemperature: '',
+          bakingTime: '',
+          ingredients: [],
+          process: '',
+        },
+      };
+
+      const state = reducer(
+        initialState,
+        changeRecipeField({ name: 'category', value: '케이크' }),
+      );
+
+      expect(state.recipe.title).toBe('딸기케이크');
+      expect(state.recipe.category).toBe('케이크');
     });
   });
 });
