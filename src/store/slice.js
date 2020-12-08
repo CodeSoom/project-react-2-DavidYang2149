@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchRecipe,
   fetchCategories,
+  postRecipe,
 } from '../services/api';
 
 const initialRecipeFields = {
@@ -69,6 +70,16 @@ export function loadCategories() {
   return async (dispatch) => {
     const categories = await fetchCategories();
     dispatch(setCategories(categories));
+  };
+}
+
+export function sendRecipe() {
+  return async (dispatch, getState) => {
+    const { recipe } = getState();
+
+    await postRecipe({ recipe });
+
+    dispatch(loadRecipe());
   };
 }
 

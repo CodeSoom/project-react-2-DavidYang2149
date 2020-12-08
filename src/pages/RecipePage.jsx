@@ -12,6 +12,7 @@ import RecipeIngredientsContainer from '../containers/RecipeIngredientsContainer
 import {
   loadRecipe,
   loadCategories,
+  sendRecipe,
 } from '../store/slice';
 
 export default function RecipePage() {
@@ -20,7 +21,11 @@ export default function RecipePage() {
   useEffect(() => {
     dispatch(loadRecipe());
     dispatch(loadCategories());
-  }, []);
+  });
+
+  const handleClick = () => {
+    dispatch(sendRecipe());
+  };
 
   return (
     <Container>
@@ -32,6 +37,7 @@ export default function RecipePage() {
         <Button
           buttonClass="bg-blue-button text-white relative px-20 py-4 rounded"
           message="레시피 정보 저장하기"
+          onClick={handleClick}
         />
       </div>
 
