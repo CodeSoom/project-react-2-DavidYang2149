@@ -1,52 +1,48 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'src/index.jsx'),
+  // webpack will take the files from ./src/index
+  entry: './src/index',
+  // and output it into /dist as bundle.js
+  output: {
+    path: path.join(__dirname, '/dist'),
+    filename: 'bundle.js',
+    publicPath: '/',
+  },
+  // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+  },
   module: {
     rules: [
+      // we use babel-loader to load our jsx and tsx files
       {
-        test: /\.jsx?$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
-        test: /\.(sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/,
+        exclude: /node_modules/,
+        use: ['file-loader?name=[name].[ext]'], // ?name=[name].[ext] is only necessary to preserve the original file name
       },
-
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
-  },
-  // output: {
-  //   path: path.resolve(__dirname, './dist'),
-  //   filename: 'main.js',
-  //   publicPath: '/project-react-2-DavidYang2149',
-  // },
-  resolve: {
-    extensions: ['.js', '.jsx'],
   },
   devServer: {
     port: 9090,
-    historyApiFallback: {
-      index: './index.html',
-    },
+    historyApiFallback: true,
   },
   plugins: [
-    new CleanWebpackPlugin(),
-    // new HtmlWebpackPlugin({
-    //   template: './index.html',
-    // }),
-    // new MiniCssExtractPlugin({
-    //   filename: 'styles.css',
-    //   chunkFilename: 'styles.css',
-    // }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      // favicon: './public/favicon.ico'
+    }),
   ],
-
 };

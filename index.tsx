@@ -5,15 +5,13 @@ import { Provider } from 'react-redux';
 
 import App from './App';
 
-import store from './store/store';
-
-import './styles.css';
+// import store from './store/store';
 
 ReactDOM.render(
   (
-    <Provider store={store}>
+    // <Provider store={store}>
       <App />
-    </Provider>
+    // </Provider>
   ),
   document.getElementById('app'),
 );

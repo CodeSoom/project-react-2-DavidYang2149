@@ -19,7 +19,7 @@ exports.config = {
   },
   bootstrap: null,
   mocha: {},
-  name: 'oh_my_baking_recipe',
+  name: 'equal dark',
   plugins: {
     retryFailedStep: {
       enabled: true,
