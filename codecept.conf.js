@@ -9,7 +9,7 @@ exports.config = {
   output: './output',
   helpers: {
     Puppeteer: {
-      url: 'http://localhost:9090',
+      url: 'http://localhost:9090/#',
       show: true,
       windowSize: '1200x900',
     },
@@ -19,7 +19,7 @@ exports.config = {
   },
   bootstrap: null,
   mocha: {},
-  name: 'oh_my_baking_recipe',
+  name: 'ohmybakingrecipe',
   plugins: {
     retryFailedStep: {
       enabled: true,

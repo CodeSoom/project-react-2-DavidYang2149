@@ -17,4 +17,7 @@ node_modules
 coverage
 
 ## Build
-dist
+build
+
+## Env
+.env

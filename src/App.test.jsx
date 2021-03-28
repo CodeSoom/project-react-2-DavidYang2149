@@ -1,33 +1,50 @@
+/* eslint-disable func-names */
 import React from 'react';
-
+import { MemoryRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
 import App from './App';
+import allConditionsState from '../fixtures/allConditionsState';
+
+jest.mock('react-redux');
+
+window.IntersectionObserver = jest.fn(function () {
+  this.observe = jest.fn();
+  this.unobserve = jest.fn();
+});
 
 describe('App', () => {
-  it('renders the home page', () => {
-    const { container } = render((
-      <App />
-    ));
+  const dispatch = jest.fn();
 
-    expect(container).toHaveTextContent('Oh My Baking Recipe');
+  beforeEach(() => {
+    dispatch.mockClear();
+
+    useDispatch.mockImplementation(() => dispatch);
+    useSelector.mockImplementation((selector) => selector(allConditionsState));
   });
 
-  context('when recipe view page', () => {
-    it('renders with recipe information', () => {
-      const { container } = render((
+  const renderApp = ({ path }) => {
+    return render((
+      <MemoryRouter initialEntries={[path]}>
         <App />
-      ));
+      </MemoryRouter>
+    ));
+  };
 
-      expect(container).toHaveTextContent('레시피명');
-      expect(container).toHaveTextContent('카테고리');
-      expect(container).toHaveTextContent('생산량');
+  context('with path /', () => {
+    it('renders RecipesPage', () => {
+      const { container } = renderApp({ path: '/' });
 
-      expect(container).toHaveTextContent('오븐 온도');
-      expect(container).toHaveTextContent('굽는 시간');
+      expect(container).toHaveTextContent('마들렌');
+    });
+  });
 
-      expect(container).toHaveTextContent('재료');
-      expect(container).toHaveTextContent('만드는 방법');
+  context('with path /notExist', () => {
+    it('renders Recipe404Page', () => {
+      const { container } = renderApp({ path: '/notExist' });
+
+      expect(container).toHaveTextContent('Recipe is Not Found!');
     });
   });
 });
