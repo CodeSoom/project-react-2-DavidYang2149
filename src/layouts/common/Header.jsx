@@ -36,7 +36,11 @@ const HeaderButton = styled.button`
   border-color: #361d74;
   background: transparent;
   cursor: pointer;
-
+  opacity: 0.8;
+  
+  :hover {
+    opacity: 1.0;
+  }
   @media screen and (max-width: 600px) {
     display: none;
   }

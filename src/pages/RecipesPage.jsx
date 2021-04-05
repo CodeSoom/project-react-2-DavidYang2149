@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { loadRecipes } from '../redux/recipes';
-import RecipesContainer from '../containers/RecipesContainer';
-import UseInfiniteScroll from '../components/UseInfiniteScroll';
+import RecipesContainer from '../containers/recipe/RecipesContainer';
+import InfiniteScroll from '../components/common/InfiniteScroll';
 
 const RecipesPage = () => {
   const dispatch = useDispatch();
   const [target, setTarget] = useState(null);
 
-  UseInfiniteScroll({
+  InfiniteScroll({
     target,
     onIntersect: ([{ isIntersecting }]) => {
       if (isIntersecting) {

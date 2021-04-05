@@ -7,7 +7,26 @@ const Label = styled.label`
   min-width: 100px;
   width: ${(props) => props.width};
   margin: 0.125rem;
-  padding: 0.75rem;
+  padding: 0.5rem;
+`;
+
+const DutyLabel = styled.label`
+  display: ${(props) => props.display};
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 100px;
+  width: ${(props) => props.width};
+  margin: 0.125rem;
+  padding: 0.5rem;
+
+  :before {
+  color: #ed5464;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-right: 5px;
+  content: '*';
+
+  }
 `;
 
 const Input = styled.input`
@@ -69,17 +88,17 @@ const Button = styled.button`
   cursor: pointer;
   margin: 10px;
   transition: 0.5s;
-
+  opacity: 0.8;
+  
   :disabled {
-    cursor: default;
-    opacity: 0.5;
-    background-color: #808080;
+    cursor: not-allowed;
+    opacity: 0.2;
   }
-`;
 
-const Paragraph = styled.p`
-  font-size: 2rem;
-  font-weight: 700;
+  :hover:enabled {
+    opacity: 1.0;
+    transition: 0.5s;
+  }
 `;
 
 const Hamburger = styled.span`
@@ -116,17 +135,85 @@ const Hamburger = styled.span`
 
 const Img = styled.img`
   margin: 0.125rem;
-  padding: 0.75rem;
+  padding: 0.5rem;
+`;
+
+const Notice = styled.div`
+  margin-left: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+`;
+
+const Title = styled.p`
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+`;
+
+const UserName = styled.span`
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-left: 1.5rem;
+  
+  :before {
+    content: 'by ';
+    font-size: 1rem;
+    font-weight: 500;
+  }
+`;
+
+const Date = styled.span`
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-left: 1.5rem;
+`;
+
+const Line = styled.hr`
+  margin-top: 10px;
+  width: 95%;
+  border: none;
+  border-radius: 2px;
+  padding: 2px 0;
+  letter-spacing: 5px;
+  background-color: rgb(245, 174, 69);
+  opacity: 0.8;
+  animation: showline 1s ease-out 1;
+
+  @keyframes showline {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 96%;
+    }
+  }
+`;
+
+const Center = styled.div`
+  text-align: center;
+
+  img {
+    width: 70%;
+    height: 70%;
+    margin-bottom: 20px;
+  }
 `;
 
 export {
   Label,
+  DutyLabel,
   Input,
   Select,
   Span,
   Textarea,
   Button,
-  Paragraph,
+  Title,
   Hamburger,
   Img,
+  Notice,
+  UserName,
+  Date,
+  Line,
+  Center,
 };

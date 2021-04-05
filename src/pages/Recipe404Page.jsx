@@ -1,8 +1,10 @@
 import React from 'react';
 
+import RecipeNotFound from '../components/recipe/RecipeNotFound';
+
 const Recipe404Page = () => {
   return (
-    <p>Recipe is Not Found!</p>
+    <RecipeNotFound />
   );
 };
 

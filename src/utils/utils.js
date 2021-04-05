@@ -35,6 +35,10 @@ export const changeDateToString = (date) => {
   return date.toDate().toISOString();
 };
 
+export const getFirstSplit = (value) => (keyword) => {
+  return value.split(keyword)[0];
+};
+
 export const formatRecipe = (recipe) => {
   const { created, updated } = recipe.data();
 

@@ -7,6 +7,6 @@ describe('Reipce404Page', () => {
   it('render 404 Page', () => {
     const { container } = render(<Reipce404Page />);
 
-    expect(container).toHaveTextContent('Recipe is Not Found!');
+    expect(container).toHaveTextContent('해당 페이지를 찾을 수 없습니다.');
   });
 });

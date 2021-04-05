@@ -35,7 +35,14 @@ module.exports = {
   optimization: {
     runtimeChunk: true,
     splitChunks: {
-      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          maxSize: 50000,
+        },
+      },
     },
   },
   resolve: {

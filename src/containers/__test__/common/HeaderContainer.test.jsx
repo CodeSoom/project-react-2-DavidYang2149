@@ -40,7 +40,7 @@ describe('HeaderContainer', () => {
         </MemoryRouter>
       ));
 
-      fireEvent.click(getByText('Sign in'));
+      fireEvent.click(getByText('Sign in (Google)'));
 
       await expect(auth.signInWithPopup).toBeCalledTimes(1);
 
@@ -63,7 +63,7 @@ describe('HeaderContainer', () => {
         </MemoryRouter>
       ));
 
-      fireEvent.click(getByText('Sign in'));
+      fireEvent.click(getByText('Sign in (Google)'));
 
       await expect(auth.signInWithPopup).toBeCalledTimes(1);
 
