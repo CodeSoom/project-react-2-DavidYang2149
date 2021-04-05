@@ -9,8 +9,29 @@ const RecipeCards = styled.ul`
 `;
 
 const RecipeCard = styled.li`
+  margin: 0 1rem;
   margin-bottom: 3rem;
-  padding: 0 1rem;
+  background-color: #f8f8ef;
+  border-radius: 5px;
+
+  :hover {
+  overflow: hidden;
+  box-shadow: 0 5px 10px 0px rgba(0,0,0,0.1);
+  transform: translatey(0px);
+  animation: float 1s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-2px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+  }
 
   @media (min-width: 600px) {
     width: 44%;
@@ -40,8 +61,6 @@ const RecipeCard = styled.li`
 
   .card-desc {
     padding: 1rem;
-    background: #f8f8ef;
-    border-radius: 0 0 5px 5px;
 
     h1 {
       font-size: 1.5rem;

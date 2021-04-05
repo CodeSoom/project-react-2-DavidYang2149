@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Loading = styled.div`
+const LoadingAnimation = styled.div`
   position: absolute;
   display: inline-block;
   width: 75px;
@@ -30,5 +30,5 @@ const Modal = styled.div`
 `;
 
 export {
-  Loading, Modal,
+  LoadingAnimation, Modal,
 };

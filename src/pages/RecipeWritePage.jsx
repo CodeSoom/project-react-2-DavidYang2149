@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import RecipeWriteContainer from '../containers/RecipeWriteContainer';
+import RecipeWriteContainer from '../containers/recipe/RecipeWriteContainer';
 import { loadRecipe, clearRecipe } from '../redux/recipe';
 
 const RecipeWritePage = ({ params }) => {

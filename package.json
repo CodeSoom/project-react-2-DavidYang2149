@@ -1,6 +1,6 @@
 {
   "name": "oh_my_baking_recipe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "baking_recipe_web_page",
   "main": "index.js",
   "scripts": {

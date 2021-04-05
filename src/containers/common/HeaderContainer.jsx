@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Header from '../../components/common/Header';
@@ -14,18 +14,18 @@ const HeaderContainer = () => {
     user: state.user,
   }));
 
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = useCallback(async () => {
     const { user: { email } } = await auth.signInWithPopup(provider);
     if (isNotEmpty(email)) {
       saveItem('user', email);
       dispatch(setUser({ name: 'userId', value: email }));
     }
-  };
+  }, [dispatch]);
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     await auth.signOut();
     dispatch(clearUser());
-  };
+  }, [dispatch]);
 
   return (
     <Header

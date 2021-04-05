@@ -7,6 +7,7 @@ import {
   isMatch,
   isEmpty,
   isNotEmpty,
+  getFirstSplit,
   RECIPE_COUNT,
 } from '../utils/utils';
 
@@ -75,7 +76,7 @@ export async function deleteRecipe({ id, userId }) {
 }
 
 export async function postFile({ userId, upload, uuid = uuidv4() }) {
-  const fileRef = await storage.ref().child(`${userId.split('@')[0]}/${uuid}`);
+  const fileRef = await storage.ref().child(`${getFirstSplit(userId)('@')}/${uuid}`);
   const response = await fileRef.putString(upload, 'data_url');
   const imageURL = response.ref.getDownloadURL();
   return imageURL;
