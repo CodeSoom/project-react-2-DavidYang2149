@@ -2,7 +2,8 @@
 
 [Oh My Baking Recipe](https://davidyang2149.github.io/project-react-2-DavidYang2149)는 레시피를 작성하고 저장하는 공간입니다.
 
-Origin Page 🏠 https://mybakingrecipe.app
+Origin Page: 🏠 https://mybakingrecipe.app
+
 Origin Github: https://github.com/DavidYang2149/MyBakingRecipe
 
 ## 📚 소개 & 기능
