@@ -219,6 +219,10 @@ export function removeFile() {
   return async (dispatch, getState) => {
     const { recipe: { image } } = getState();
 
+    if (isEmpty(image)) {
+      return;
+    }
+
     await deleteFile({ image });
     dispatch(actions.changeRecipe({ name: 'image', value: null }));
   };

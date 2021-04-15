@@ -3,25 +3,31 @@ import { MemoryRouter } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 
-import allConditionsState from '../../../fixtures/allConditionsState';
-import RecipePage from '../RecipePage';
+import allConditionsState from '../../../../fixtures/allConditionsState';
+import RecipeWritePage from '../../recipe/RecipeWritePage';
 
 jest.mock('react-redux');
 
-describe('RecipePage', () => {
+describe('RecipeWritePage', () => {
   const dispatch = jest.fn();
 
   beforeEach(() => {
     dispatch.mockClear();
 
     useDispatch.mockImplementation(() => dispatch);
-    useSelector.mockImplementation((selector) => selector(allConditionsState));
+    useSelector.mockImplementation((selector) => selector({
+      ...allConditionsState,
+      user: {
+        userId: '1',
+        displayName: '',
+      },
+    }));
   });
 
   it('render Page', () => {
     const { container } = render((
       <MemoryRouter>
-        <RecipePage />
+        <RecipeWritePage />
       </MemoryRouter>
     ));
 
@@ -33,7 +39,7 @@ describe('RecipePage', () => {
       const params = { id: 1 };
 
       const { container } = render(
-        <RecipePage params={params} />,
+        <RecipeWritePage params={params} />,
       );
 
       expect(container).toHaveTextContent('마들렌');
@@ -43,8 +49,8 @@ describe('RecipePage', () => {
   context('without params props', () => {
     it('renders name', () => {
       const { container } = render(
-        <MemoryRouter initialEntries={['/recipe/1']}>
-          <RecipePage />
+        <MemoryRouter initialEntries={['/recipewrite/1']}>
+          <RecipeWritePage />
         </MemoryRouter>,
       );
 

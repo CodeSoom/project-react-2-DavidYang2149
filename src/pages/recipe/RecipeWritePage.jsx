@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import RecipeContainer from '../containers/recipe/RecipeContainer';
-import { loadRecipe, clearRecipe } from '../redux/recipe';
+import RecipeWriteContainer from '../../containers/recipe/RecipeWriteContainer';
+import { loadRecipe, clearRecipe } from '../../redux/recipe';
 
-const RecipePage = ({ params }) => {
+const RecipeWritePage = ({ params }) => {
   const dispatch = useDispatch();
   const { id } = params || useParams();
 
@@ -15,8 +15,8 @@ const RecipePage = ({ params }) => {
   }, [id]);
 
   return (
-    <RecipeContainer />
+    <RecipeWriteContainer />
   );
 };
 
-export default RecipePage;
+export default RecipeWritePage;

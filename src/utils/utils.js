@@ -28,6 +28,20 @@ export const isNotArray = (value) => {
   return !isArray(value);
 };
 
+export const isLessThen = (subject) => (value) => {
+  if (subject > value) {
+    return true;
+  }
+  return false;
+};
+
+export const isGreaterThen = (subject) => (value) => {
+  if (subject < value) {
+    return true;
+  }
+  return false;
+};
+
 export const changeDateToString = (date) => {
   if (isEmpty(date)) {
     return false;
@@ -47,6 +61,15 @@ export const formatRecipe = (recipe) => {
     id: recipe.id,
     created: changeDateToString(created),
     updated: changeDateToString(updated),
+  };
+};
+
+export const formatMessage = (chat) => {
+  const { created } = chat.data();
+
+  return {
+    ...chat.data(),
+    created: changeDateToString(created),
   };
 };
 

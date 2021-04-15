@@ -133,6 +133,7 @@ const RecipeWriteContainer = () => {
     }
 
     setLoading(true);
+    await dispatch(removeFile());
     await dispatch(removeRecipe());
     await dispatch(updateRecipes());
 

@@ -7,6 +7,8 @@ import {
   isNotEmpty,
   isNotMatch,
   isNotArray,
+  isLessThen,
+  isGreaterThen,
 } from '../utils';
 import sampleRecipes from '../../../fixtures/recipes';
 
@@ -116,6 +118,34 @@ describe('isNotArray', () => {
   context('without array value', () => {
     it('return true (reverse result)', () => {
       expect(isNotArray('1')).toBe(true);
+    });
+  });
+});
+
+describe('isLessThen', () => {
+  context('with small value', () => {
+    it('return true', () => {
+      expect(isLessThen(5)(1)).toBe(true);
+    });
+  });
+
+  context('with not small value', () => {
+    it('return false', () => {
+      expect(isLessThen(1)(5)).toBe(false);
+    });
+  });
+});
+
+describe('isGreaterThen', () => {
+  context('with not bigger value', () => {
+    it('return false', () => {
+      expect(isGreaterThen(5)(1)).toBe(false);
+    });
+  });
+
+  context('with bigger value', () => {
+    it('return true', () => {
+      expect(isGreaterThen(1)(5)).toBe(true);
     });
   });
 });

@@ -50,7 +50,7 @@ export function loadRecipes() {
     const response = await fetchRecipes(recipe);
 
     if (isEmpty(response)) {
-      dispatch(actions.setRecipes(initialState));
+      dispatch(actions.setRecipes([]));
       return;
     }
 
