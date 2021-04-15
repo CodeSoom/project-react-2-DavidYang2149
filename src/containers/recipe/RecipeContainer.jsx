@@ -10,7 +10,7 @@ import RecipeDescription from '../../components/recipe/RecipeDescription';
 import IngredientList from '../../components/recipe/IngredientList';
 import Loading from '../../components/common/Loading';
 import { Button } from '../../layouts/Recipe';
-import { removeRecipe } from '../../redux/recipe';
+import { removeRecipe, removeFile } from '../../redux/recipe';
 import { updateRecipes } from '../../redux/recipes';
 import {
   isMatch,
@@ -39,6 +39,7 @@ const RecipeContainer = () => {
     }
 
     setLoading(true);
+    await dispatch(removeFile());
     await dispatch(removeRecipe());
     await dispatch(updateRecipes());
     history.push('/');

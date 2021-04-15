@@ -21,6 +21,10 @@ const Header = ({ userId, signInWithGoogle, signOut }) => {
     history.push('/recipewrite/0');
   };
 
+  const onClickChat = () => {
+    history.push('/chat');
+  };
+
   return (
     <HeaderNav>
       <div>
@@ -40,10 +44,14 @@ const Header = ({ userId, signInWithGoogle, signOut }) => {
                   {getFirstSplit(userId)('@')}
                 </Link>
               </HeaderUser>
+              <HeaderButton type="button" onClick={onClickChat}>
+                Chat
+              </HeaderButton>
               <HeaderButton type="button" onClick={onClickNewRecipe}>
                 New Recipe
               </HeaderButton>
               <HeaderButton type="button" onClick={signOut}>Logout</HeaderButton>
+              <UserIcon src="images/chat-bubble-dots.svg" onClick={onClickChat} alt="Chat" />
               <UserIcon src="images/new-recipe.svg" onClick={onClickNewRecipe} alt="New Recipe" />
               <UserIcon src="images/close-outline.svg" onClick={signOut} alt="Logout" />
             </ButtonLines>

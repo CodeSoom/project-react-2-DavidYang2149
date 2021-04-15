@@ -18,7 +18,8 @@ const pathHtml = path.resolve(__dirname, 'public', 'index.html');
 
 module.exports = {
   mode,
-  devtool: 'cheap-eval-source-map',
+  // XXX CASE : When use debuging
+  // devtool: 'cheap-eval-source-map',
   entry: {
     main: pathIndex,
   },
@@ -50,24 +51,24 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.(jpe?g|PNG|gif|svg)$/i,
-        loader: 'url-loader',
-        options: {
-          name: '[name].[hash:8].[ext]',
-          outputPath: 'static/media',
-          limit: 10000,
-        },
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        loader: 'file-loader',
-        exclude: [/\.(js|jsx)$/, /\.html$/, /\.json$/],
-        options: {
-          name: '[name].[hash:8].[ext]',
-          outputPath: 'static/media',
-        },
-      },
+      // {
+      //   test: /\.(jpe?g|PNG|gif|svg)$/i,
+      //   loader: 'url-loader',
+      //   options: {
+      //     name: '[name].[hash:8].[ext]',
+      //     outputPath: 'static/media',
+      //     limit: 10000,
+      //   },
+      // },
+      // {
+      //   test: /\.(png|jpe?g|gif)$/i,
+      //   loader: 'file-loader',
+      //   exclude: [/\.(js|jsx)$/, /\.html$/, /\.json$/],
+      //   options: {
+      //     name: '[name].[hash:8].[ext]',
+      //     outputPath: 'static/media',
+      //   },
+      // },
       {
         test: /\.css$/,
         use: [

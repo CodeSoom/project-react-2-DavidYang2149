@@ -21,3 +21,6 @@ build
 
 ## Env
 .env
+
+## Sentry
+report.*.json
